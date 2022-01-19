@@ -1,0 +1,6 @@
+- name: création de xavki
+  user:
+    name: xavki
+    state: present
+    password: "{{ 'password' | password_hash('sha512') }}"
+
