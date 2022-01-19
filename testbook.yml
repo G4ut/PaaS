@@ -1,5 +1,3 @@
----
-
 - hosts: all
   tasks:
   - name: Creating an empty file
