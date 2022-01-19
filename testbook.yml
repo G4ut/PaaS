@@ -1,7 +1,0 @@
-- hosts: all
-  tasks:
-  - name: Creating an empty file
-    file:
-      path: "/your path"
-      state: touch
-
