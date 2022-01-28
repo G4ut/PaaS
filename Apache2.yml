@@ -1,6 +1,6 @@
 ---
-- name: "Installation apache"
-  hosts: http1
-  roles:
-    - role: "apache"
-      php_install: yes
+  - hosts: apache
+    sudo: yes
+    tasks:
+      - name: install apache2
+        apt: name=apache2 update_cache=yes state=latest
