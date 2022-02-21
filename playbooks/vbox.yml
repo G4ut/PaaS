@@ -17,7 +17,7 @@
     when: ansible_distribution == 'Debian' and ansible_distribution_release == 'buster'
 
   - name: Installing fasttrack archive keyring
-    ansible.builtin.apt:
+    apt:
       name: fasttrack-archive-keyring
       state: latest
       update_cache: yes
