@@ -1,0 +1,65 @@
+---
+- name: Install vbox
+  hosts: all
+  remote_user: vagrant
+
+  tasks:
+  - name: Enabling Debian Bullseye Backport Source
+    ansible.builtin.apt_repository:
+      repo: deb http://deb.debian.org/debian bullseye-backports main
+      state: present
+    when: ansible_distribution == 'Debian' and ansible_distribution_release == 'bullseye'
+
+  - name: Enabling Debian Buster Backport Source
+    ansible.builtin.apt_repository:
+      repo: deb http://deb.debian.org/debian buster-backports main
+      state: present
+    when: ansible_distribution == 'Debian' and ansible_distribution_release == 'buster'
+
+  - name: Installing fasttrack archive keyring
+    ansible.builtin.apt:
+      name: fasttrack-archive-keyring
+      state: latest
+      build-dep: fixed
+      update_cache: yes
+      upgrade: yes
+    when: ansible_distribution == 'Debian'
+  
+  - name: Enabling Debian Bullseye Fast Track Source (1/2)
+    ansible.builtin.apt_repository:
+      repo: deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-fasttrack main contrib
+      state: present
+      filename: fasttrack
+    when: ansible_distribution == 'Debian' and ansible_distribution_release == 'bullseye'
+      
+  - name: Enabling Debian Bullseye Fast Track Source (2/2)
+    ansible.builtin.apt_repository:
+      repo: deb https://fasttrack.debian.net/debian-fasttrack/ bullseye-backports-staging main contrib
+      state: present
+      filename: fasttrack
+    when: ansible_distribution == 'Debian' and ansible_distribution_release == 'bullseye'
+
+  - name: Enabling Debian Buster Fast Track Source (1/2)
+    ansible.builtin.apt_repository:
+      repo: deb https://fasttrack.debian.net/debian-fasttrack/ buster-fasttrack main contrib
+      state: present
+      filename: fasttrack
+    when: ansible_distribution == 'Debian' and ansible_distribution_release == 'buster'
+      
+  - name: Enabling Debian Buster Fast Track Source (2/2)
+    ansible.builtin.apt_repository:
+      repo: deb https://fasttrack.debian.net/debian-fasttrack/ buster-backports-staging main contrib
+      state: present
+      filename: fasttrack
+    when: ansible_distribution == 'Debian' and ansible_distribution_release == 'buster'
+
+  - name: Installing Virtualbox and ext-pack
+    ansible.builtin.apt:
+      name:
+      - pkg:
+        - virtualbox
+        - virtualbox-ext-pack
+      state: latest
+      build-dep: fixed
+      update_cache: yes
+      upgrade: yes
