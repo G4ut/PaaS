@@ -1,6 +1,7 @@
 ---
 - name: Install vbox
   hosts: all
+  become: yes
   remote_user: vagrant
 
   tasks:
