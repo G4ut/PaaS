@@ -21,7 +21,6 @@
       name: fasttrack-archive-keyring
       state: latest
       update_cache: yes
-      upgrade: yes
     when: ansible_distribution == 'Debian'
   
   - name: Enabling Debian Bullseye Fast Track Source (1/2)
@@ -60,4 +59,3 @@
         - virtualbox-ext-pack
       state: latest
       update_cache: yes
-      upgrade: yes
