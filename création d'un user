@@ -1,6 +1,5 @@
-- name: création de xavki
+- name: création d'un user
   user:
-    name: xavki
+    name: user awx
     state: present
     password: "{{ 'password' | password_hash('sha512') }}"
-
