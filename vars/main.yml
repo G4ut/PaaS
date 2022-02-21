@@ -2,5 +2,5 @@
 mysql_user: "admin"
 mysql_password: "secret"
 mysql_dbname: "blog"
-db_host: "192.168.0.22"
+db_host: "192.168.121.253"
 webserver_host: "192.168.0.21"
