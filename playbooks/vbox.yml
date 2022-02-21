@@ -20,7 +20,6 @@
     ansible.builtin.apt:
       name: fasttrack-archive-keyring
       state: latest
-      build-dep: fixed
       update_cache: yes
       upgrade: yes
     when: ansible_distribution == 'Debian'
@@ -60,6 +59,5 @@
         - virtualbox
         - virtualbox-ext-pack
       state: latest
-      build-dep: fixed
       update_cache: yes
       upgrade: yes
