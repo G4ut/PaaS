@@ -27,6 +27,11 @@
     copy:
       src: app/
       dest: /var/www/html/
+
+  - name: deploy php database config
+    template:
+      src: "db-config.php.j2"
+      dest: "/var/www/html/db-config.php"
   
   - name: ensure apache service is start
     service:
