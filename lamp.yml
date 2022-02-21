@@ -25,7 +25,7 @@
 
   - name: upload web app source
     copy:
-      src: app/
+      src: templates/
       dest: /var/www/html/
 
   - name: deploy php database config
