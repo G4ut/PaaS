@@ -10,7 +10,7 @@
       state: latest
       update_cache: yes
 
-- name: Download Vagrant GPG
-  get_url:
-    url: https://apt.releases.hashicorp.com/gpg
-    dest: /tmp/vagrant.gpg
+  - name: Download Vagrant GPG
+    get_url:
+      url: https://apt.releases.hashicorp.com/gpg
+      dest: /tmp/vagrant.gpg
