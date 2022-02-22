@@ -2,9 +2,5 @@
   - hosts: all
     become: yes
     tasks:
-      - name: creating new directory
-        file: 
-          path: "{{ path_vagrantFile }}" 
-          state: touch
-          content: |
-            "{{ Vagrantfile }}"
+      - name: creating new Vagrantfile
+        template: src="{{ Vagrantfile }}" dest="{{ path }}"
