@@ -9,6 +9,8 @@
     - name: install php
       apt: name=php
       
+      
+      
     - name: virtualhost
       template: src=virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
       
