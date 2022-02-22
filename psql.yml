@@ -1,7 +1,9 @@
-- name: Create a new database with name "acme" and specific encoding and locale # settings.
-  postgresql_db:
-    name: {{ name_bdd }}
-    encoding: UTF-8
-    lc_collate: de_DE.UTF-8
-    lc_ctype: de_DE.UTF-8
-    template: template0
+- hosts: all
+  tasks: 
+  - name: Create a new database with name "acme" and specific encoding and locale # settings.
+    postgresql_db:
+      name: {{ name_bdd }}
+      encoding: UTF-8
+      lc_collate: de_DE.UTF-8
+      lc_ctype: de_DE.UTF-8
+      template: template0
