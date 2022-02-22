@@ -1,5 +1,0 @@
-- name: création d'un user
-  user:
-    name: "{{ name_user }}"
-    state: present
-    password: "{{ 'password' | password_hash('sha512') }}"
