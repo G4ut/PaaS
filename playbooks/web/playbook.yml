@@ -1,6 +1,6 @@
 ---
 - name: installation serveur web
-  hosts: {{ ip }}
+  hosts: "{{ ip }}"
   remote_user: root
   
   tasks:
