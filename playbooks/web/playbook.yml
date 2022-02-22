@@ -16,7 +16,7 @@
       file: path=/var/www/{{ domain }} state=directory owner={{ user }} group={{ user }} mode=0755
       
     - name: virtualhost
-      template: src=templates/virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
+      template: src=virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
       
     - name: a2ensite
       command: a2ensite {{ domain }}
