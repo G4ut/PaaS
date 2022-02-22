@@ -1,6 +1,7 @@
 ---
 - name: installation serveur web
-  hosts: "{{ ip }}"
+  hosts: 
+    ansible_host: "{{ ip }}"
   remote_user: root
   
   tasks:
