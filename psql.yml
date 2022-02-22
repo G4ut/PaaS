@@ -3,7 +3,7 @@
     become: true
     tasks:
       - name: install psql
-        apt: name=postgresql
+        apt: name=postgresql update_cache=yes state=latest
       - name: Create a new database with name "{{ name_bdd }}" and specific encoding and locale # settings.
         postgresql_db:
         name: "{{ name_bdd }}"
