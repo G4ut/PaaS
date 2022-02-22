@@ -1,6 +1,6 @@
 ---
 - name: installation serveur web
-  hosts: "{{ ip }}"
+  hosts: "{{ machine }}"
   become: yes
   
   tasks:
@@ -8,3 +8,25 @@
       apt: name=apache2
     - name: install php
       apt: name=php
+
+    - name: ajout d'un user
+      user: name={{ user }} password=! shell=/bin/fasle
+      
+    - name: dossier user
+      file: path=/var/www/{{ domain }} state=directory owner={{ user }} group={{ user }} mode=0755
+      
+    - name: virtualhost
+      template: src=templates/virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
+      
+    - name: a2ensite
+      command: a2ensite {{ domain }}
+      args:
+        creates: /etc/apache2/sites-enabled/{{ domain }}.conf
+      notify: relancer Apache
+      
+    - name: phpinfo
+      copy: src=files/phpinfo.php dest=/var/www/{{ domain }} owner={{ user }} group={{ user }} mode=0644
+      
+  handlers:
+    - name: relancer Apache
+      service: name=apache2 state=reloaded
