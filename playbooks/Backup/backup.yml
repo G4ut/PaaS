@@ -1,8 +1,6 @@
   - hosts: all
     become: yes
     tasks:
-      - name: install Rsync
-        ansible-galaxy collection install ansible.posix
       - name: Synchronize directories on remote host.
         ansible.posix.synchronize:
           src: "{{ Source }}"
