@@ -1,7 +1,8 @@
 ---
 - name: installation serveur web
-  hosts: 
-    ansible_host: "{{ ip }}"
+  hosts:
+    jumper:
+        ansible_host: "{{ ip }}"
   remote_user: root
   
   tasks:
