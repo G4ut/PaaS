@@ -4,7 +4,7 @@
     tasks:
       - name: creating new directory
         file: 
-          path: "{{ path }}" 
+          path: "{{ path_vagrantFile }}" 
           state: touch
           content: |
             "{{ Vagrantfile }}"
