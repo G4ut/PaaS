@@ -48,11 +48,8 @@
       state: present
     when: ansible_distribution == 'Debian' and ansible_distribution_release == 'buster'
 
-  - name: Installing Virtualbox and ext-pack
-    ansible.builtin.apt:
-      name:
-      - pkg:
-        - virtualbox
-        - virtualbox-ext-pack
+  - name: Installing Virtualbox
+    apt:
+      name: virtualbox
       state: latest
       update_cache: yes
