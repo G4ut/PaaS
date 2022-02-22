@@ -1,7 +1,9 @@
 ---
   - hosts: all
     become: true
-    tasks: 
-    - name: Create a new database with name "{{ name_bdd }}" and specific encoding and locale # settings.
-      postgresql_db:
+    tasks:
+      - name: install psql
+        apt: name=postgresql
+      - name: Create a new database with name "{{ name_bdd }}" and specific encoding and locale # settings.
+        postgresql_db:
         name: "{{ name_bdd }}"
