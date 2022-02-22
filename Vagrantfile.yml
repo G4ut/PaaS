@@ -1,4 +1,4 @@
- ---
+---
   - hosts: all
     become: yes
     tasks:
@@ -15,22 +15,22 @@
             state: latest
             update_cache: yes
       
-        - name: Download Vagrant GPG
-          get_url:
-            url: https://apt.releases.hashicorp.com/gpg
-            dest: /tmp/vagrant.gpg
+      - name: Download Vagrant GPG
+        get_url:
+          url: https://apt.releases.hashicorp.com/gpg
+          dest: /tmp/vagrant.gpg
             
-        - name: Add Apt signing key on remote server to keyring
-          ansible.builtin.apt_key:
-            file: /tmp/vagrant.gpg
-            state: present      
+      - name: Add Apt signing key on remote server to keyring
+        ansible.builtin.apt_key:
+          file: /tmp/vagrant.gpg
+          state: present      
       
-        - name: Enabling Vagrant Source
-          ansible.builtin.apt_repository:
-            repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ansible_distribution_release}} main
-            state: present
+      - name: Enabling Vagrant Source
+        ansible.builtin.apt_repository:
+          repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ansible_distribution_release}} main
+          state: present
             
-        - name: Installing Vagrant
+      - name: Installing Vagrant
           apt:
             name: vagrant
             state: latest
