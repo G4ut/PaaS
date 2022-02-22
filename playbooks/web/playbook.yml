@@ -25,7 +25,7 @@
       notify: relancer Apache
       
     - name: phpinfo
-      copy: src=phpinfo.php dest=/var/www/{{ domain }} owner={{ user }} group={{ user }} mode=0644
+      copy: src=phpinfo.php dest=/var/www/html/{{ domain }} owner={{ user }} group={{ user }} mode=0644
       
   handlers:
     - name: relancer Apache
