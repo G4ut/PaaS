@@ -6,4 +6,5 @@
         path: "{{ path_vagrantFile }}"
         state: touch
         owner: vagrant
+        group: vagrant
         mode: ugo=rwx
