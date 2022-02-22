@@ -2,8 +2,6 @@
 - name: installation serveur web
   hosts: "{{ host }}"
   become: yes
-  vars:
-    domain: "{{ user }}".asrall.net
   
   tasks:
     - name: install apache
@@ -11,7 +9,7 @@
     - name: install php
       apt: name=php
 
-    - name: ajout d'un user
+    - name: ajout user
       user: name={{ user }} password=! shell=/bin/fasle
       
     - name: dossier user
