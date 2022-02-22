@@ -1,0 +1,8 @@
+---
+  - hosts: all
+    become: true
+    tasks:
+      - name: mysql bdd create named "{{ name_bdd }}"
+        mssql_db:
+        name: "{{ name_bdd }}"
+        state: present
