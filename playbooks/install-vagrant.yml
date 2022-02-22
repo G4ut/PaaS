@@ -1,0 +1,4 @@
+- name: Install vagrant
+  hosts: all
+  become: yes
+  remote_user: vagrant
