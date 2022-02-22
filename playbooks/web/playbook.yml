@@ -1,1 +1,11 @@
-a
+---
+- name: installation serveur web
+  hosts: {{ ip }}
+  remote_user: root
+  
+  tasks:
+    - name: install apache php
+      apt: name={{ item }}
+      with_items:
+        - apache2
+        - php
