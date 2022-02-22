@@ -13,7 +13,7 @@
       user: name={{ user }} password=! shell=/bin/fasle
       
     - name: dossier user
-      file: path=/var/www/{{ domain }} state=directory owner={{ user }} group={{ user }} mode=0755
+      file: path=/var/www/asrall/{{ domain }} state=directory owner={{ user }} group={{ user }} mode=0755
       
     - name: virtualhost
       template: src=virtualhost.conf dest=/etc/apache2/sites-available/{{ domain }}.conf
