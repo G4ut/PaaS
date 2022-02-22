@@ -1,8 +1,9 @@
+---
   - hosts: all
-    become: yes
-    tasks:
-      - name: création d'un vagrantfile
-        path: "{{ path_vagrantFile }}"
-        state: touch
-        mode: ugo=rwx
-        line: "{{ vagrantFile }}"
+      become: yes
+      tasks:
+        - name: création d'un vagrantfile
+          path: "{{ path_vagrantFile }}"
+          state: touch
+          mode: ugo=rwx
+          line: "{{ vagrantFile }}"
