@@ -2,6 +2,8 @@
   - hosts: all
     become: true
     tasks:
+      - name: install mysql
+        apt: name=mysql-server update_cache=yes state=latest
       - name: mysql bdd create named "{{ name_bdd }}"
         mssql_db:
         name: "{{ name_bdd }}"
