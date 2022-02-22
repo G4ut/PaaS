@@ -3,9 +3,7 @@
     tasks:
       - name: install Rsync
         ansible-galaxy collection install ansible.posix
-#        apt: name=rsync update_cache=yes state=latest
       - name: Synchronize directories on remote host.
         ansible.posix.synchronize:
           src: "{{ Source }}"
           dest: "{{ destination }}"
-#    delegate_to: "{{ inventory_hostname }}"
