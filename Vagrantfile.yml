@@ -7,4 +7,4 @@
               owner=root
               group=sys
               mode=0555
-              state={{ "file" if  p.stat.exists else "touch"}}
+              state=touch
