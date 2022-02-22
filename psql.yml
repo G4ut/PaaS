@@ -5,5 +5,9 @@
       - name: install psql
         apt: name=postgresql update_cache=yes state=latest
       - name: Create a new database with name {{ name_bdd }} and specific encoding and locale # settings.
-        community.postgresql.postgresql_db:
+        postgresql_db:
         name: "{{ name_bdd }}"
+        encoding: UTF-8
+        lc_collate: de_DE.UTF-8
+        lc_ctype: de_DE.UTF-8
+        template: template0
