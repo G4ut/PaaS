@@ -2,6 +2,8 @@
 - name: installation serveur web
   hosts: "{{ host }}"
   become: yes
+  vars:
+    domain: {{ user }}.asrall.net
   
   tasks:
     - name: install apache
