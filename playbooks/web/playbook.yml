@@ -19,7 +19,7 @@
       notify: relancer Apache
       
     - name: phpinfo
-      copy: src=phpinfo.php dest=/var/www/html/ mode=0644
+      copy: src=phpinfo.php dest=/var/www/ mode=0644
       
   handlers:
     - name: relancer Apache
