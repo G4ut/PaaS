@@ -1,7 +1,7 @@
 ---
 - name: installation serveur web
   hosts: "{{ ip }}"
-  remote_user: root
+  become: yes
   
   tasks:
     - name: install apache
