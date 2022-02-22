@@ -1,10 +1,10 @@
----
+ ---
   - hosts: all
     become: yes
     tasks:
-      - name: create Vagrantfile
-        file: path= "{{ path }}" 
-              owner=root
-              group=sys
-              mode=0555
-              state=touch
+      - name: creating new directory
+        file: 
+          path: "{{ path }}" 
+          state: touch
+          content: |
+            "{{ Vagrantfile }}"
