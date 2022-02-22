@@ -1,0 +1,8 @@
+  - hosts: all
+    become: yes
+    tasks:
+      - name: Synchronize two directories on one remote host.
+        ansible.posix.synchronize:
+          src: "{{ Source }}"
+          dest: "{{ destination }}"
+#    delegate_to: "{{ inventory_hostname }}"
