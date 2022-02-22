@@ -7,5 +7,5 @@
     - name: install apache php
       apt: name={{ item }}
       with_items:
-        - apache2
-        - php
+        - "{{ apache2 }}"
+        - "{{ php }}"
