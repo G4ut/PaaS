@@ -1,7 +1,7 @@
   - hosts: all
     become: yes
     tasks:
-      - name: Synchronize two directories on one remote host.
+      - name: Synchronize directories on remote host.
         ansible.posix.synchronize:
           src: "{{ Source }}"
           dest: "{{ destination }}"
