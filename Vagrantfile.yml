@@ -2,9 +2,9 @@
   - hosts: all
     become: yes
     tasks:
-      - name: creation d'un vagrantfile
-        path: "{{ path_vagrantFile }}"
-        state: touch
-        owner: vagrant
-        group: vagrant
-        mode: ugo=rwx
+      - name: create Vagrantfile
+        file: path= "{{ path }}" 
+              owner=root
+              group=sys
+              mode=0555
+              state={{ "file" if  p.stat.exists else "touch"}}
