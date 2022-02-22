@@ -53,9 +53,3 @@
       name: virtualbox
       state: latest
       update_cache: yes
-
-  - name: Installing Virtualbox Ext Pack
-    apt:
-      name: virtualbox-ext-pack
-      state: latest
-      update_cache: yes
