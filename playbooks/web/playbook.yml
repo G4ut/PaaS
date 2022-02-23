@@ -1,6 +1,6 @@
 ---
 - name: installation serveur web
-  hosts: "{{ host }}"
+  hosts: serveurweb
   become: yes
   
   tasks:
