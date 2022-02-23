@@ -1,6 +1,17 @@
 ---
 - hosts: all
   tasks:
+  - name: Installing libvirt
+    apt: name=qemu-kvm update_cache=yes state=latest
+    apt: name=libvirt-daemon-system update_cache=yes state=latest
+    apt: name=libvirt-clients update_cache=yes state=latest
+    apt: name=bridge-utils update_cache=yes state=latest
+    apt: name=virtinst update_cache=yes state=latest
+    apt: name=virt-manager update_cache=yes state=latest
+  
+  - name: Installing Vagrant
+  apt: name=vagrant update_cache=yes state=latest
+  
   - name: Creates directory
     file:
       path: "{{path}}"
@@ -13,7 +24,7 @@
         Vagrant.configure("2") do |config|
           config.vm.box = "debian/buster64"
 
-         config.vm.provider "virtualbox" do |vb|
+         config.vm.provider "libvirt" do |vb|
             vb.memory = "{{ram}}"
             vb.cpus = "{{cpu}}"
           end
@@ -29,10 +40,9 @@
               b.vm.hostname = "ldap1"
               b.vm.network :private_network, :ip => "{{ip_address}}"
             end
-
         end
         
-  - name: Run command on specific folder
+  - name: Run vagrant up
     command: vagrant up
     args:
       chdir: "{{path}}"
