@@ -1,8 +1,18 @@
 ---
 - name: installation serveur bdd
-  hosts: "{{ host }}"
+  hosts: all
   become: yes
   
-    tasks:
-    - name: install mariadb
-      apt: name=mariadb-server
+  tasks:  
+    - name: install mysql    
+      apt: name=mysql 
+      update_cache: yes 
+      cache_valid_time: 3600
+      state: present
+    - name: start up the mysql service  
+      shell: "service mysql start"  
+    - name: ensure mysql is enabled to run on startup  
+      service: 
+        name:mysql 
+        state:started 
+        enabled:true
