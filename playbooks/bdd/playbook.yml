@@ -2,12 +2,12 @@
   - hosts: all
     become: true
     tasks:
-      - name: install mysql
+      - name: install mariadb
         apt: name= mariadb-server update_cache=yes state=latest
-      - name: start up the mysql service  
-        ansible.builtin.shell: "systemctl start mysql"  
-      - name: ensure mysql is enabled to run on startup  
+      - name: start up the mariadb service  
+        ansible.builtin.shell: "systemctl start mariadb"  
+      - name: ensure mariadb is enabled to run on startup  
         ansible.builtin.service: 
-          name: mysql 
+          name: mariadb 
           state: started 
           enabled: yes
