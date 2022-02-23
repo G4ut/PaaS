@@ -1,19 +1,13 @@
 ---
-- name: installation serveur bdd
-  hosts: all
-  become: yes
-  
-  tasks:
-    - name: install mysql    
-      apt: 
-        name: mysql-server
-        update_cache: yes 
-        cache_valid_time: 3600
-        state: present
-    - name: start up the mysql service  
-      ansible.builtin.shell: "systemctl start mysql"  
-    - name: ensure mysql is enabled to run on startup  
-      ansible.builtin.service: 
-        name: mysql 
-        state: started 
-        enabled: yes
+  - hosts: all
+    become: true
+    tasks:
+      - name: install mysql
+        apt: name=mysql-server update_cache=yes state=latest
+      - name: start up the mysql service  
+        ansible.builtin.shell: "systemctl start mysql"  
+      - name: ensure mysql is enabled to run on startup  
+        ansible.builtin.service: 
+          name: mysql 
+          state: started 
+          enabled: yes
