@@ -7,7 +7,7 @@
   - name: Run command on specific folder
     command: vagrant up
     args:
-      chdir: "{{ path }}"
+      chdir: dest="{{ path }}"
 
 
 
