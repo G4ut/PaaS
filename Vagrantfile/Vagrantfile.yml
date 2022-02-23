@@ -14,7 +14,7 @@
         state: latest
         update_cache: yes
     
-      - name: creating Vagrantfile "{{ Vagrantfile }}" from Git:
+      - name: creating Vagrantfile "{{ Vagrantfile }}" from Git
         template: src="{{ Vagrantfile }}" dest="{{ path }}"
 
       - name: vagrant up
