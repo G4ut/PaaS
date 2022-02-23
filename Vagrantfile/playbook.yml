@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+  - name: Choix Vagrantfile
+    template: src="{{ Vagrantfile }}" dest="{{ path }}"
+
+  - name: Run command on specific folder
+    command: vagrant up
+    args:
+      chdir: /home/vkbida/vagranttest4/
+
+
+
+ 
