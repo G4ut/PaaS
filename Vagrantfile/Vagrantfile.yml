@@ -2,7 +2,19 @@
   - hosts: all
     become: yes
     tasks:
-      - name: creating new Vagrantfile
+      - name: Installing Virtualbox
+        apt:
+        name: virtualbox
+        state: latest
+        update_cache: yes
+    
+      - name: Installing Vagrant
+        apt:
+        name: vagrant
+        state: latest
+        update_cache: yes
+    
+      - name: creating Vagrantfile "{{ Vagrantfile }}" from Git:
         template: src="{{ Vagrantfile }}" dest="{{ path }}"
 
       - name: vagrant up
