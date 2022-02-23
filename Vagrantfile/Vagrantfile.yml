@@ -3,16 +3,10 @@
     become: yes
     tasks:
       - name: Installing Virtualbox
-        apt:
-        name: virtualbox
-        state: latest
-        update_cache: yes
+        apt: name=vbox update_cache=yes state=latest 
     
       - name: Installing Vagrant
-        apt:
-        name: vagrant
-        state: latest
-        update_cache: yes
+        apt: name=vagrant update_cache=yes state=latest
     
       - name: creating Vagrantfile "{{ Vagrantfile }}" from Git
         template: src="{{ Vagrantfile }}" dest="{{ path }}"
