@@ -1,5 +1,7 @@
   - hosts: all
     become: yes
     tasks:
-      - name: Synchronize directories on remote host.
-        command: mkdir /home/vagrant/test
+      - name: install rsync
+        apt: name=rsync update_cache=yes state=latest
+      - name: Synchronize directories on remote host by rsync.
+        command: rsync -az "{{ source }}" "{{destination }}"
