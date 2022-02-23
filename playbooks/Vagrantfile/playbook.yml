@@ -10,7 +10,7 @@
     apt: name=virt-manager update_cache=yes state=latest
   
   - name: Installing Vagrant
-  apt: name=vagrant update_cache=yes state=latest
+    apt: name=vagrant update_cache=yes state=latest
   
   - name: Creates directory
     file:
