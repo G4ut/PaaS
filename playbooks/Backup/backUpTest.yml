@@ -1,0 +1,5 @@
+  - hosts: all
+    become: yes
+    tasks:
+      - name: Synchronize directories on remote host.
+        command: mkdir /home/vagrant/test
