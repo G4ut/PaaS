@@ -4,3 +4,9 @@
     tasks:
       - name: creating new Vagrantfile
         template: src="{{ Vagrantfile }}" dest="{{ path }}"
+
+      - name: vagrant up
+        args:
+          chdir: "{{ path }}"
+        command: vagrant up
+        
