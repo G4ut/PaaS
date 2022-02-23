@@ -3,12 +3,12 @@
   tasks:
   - name: Creates directory
     file:
-      path: "{{path}}" "{{directory_name}}"
+      path: "{{path}}"
       state: directory
 
   - name: Ansible create file with content example
     copy:
-      dest: "/home/vkbida/vagranttest4/Vagrantfile"
+      dest: "{{path}}/Vagrantfile"
       content: |
         Vagrant.configure("2") do |config|
           config.vm.box = "debian/buster64"
@@ -27,7 +27,7 @@
             
             config.vm.define "ldap1" do |b|
               b.vm.hostname = "ldap1"
-              b.vm.network :private_network, :ip => "192.168.121.2"
+              b.vm.network :private_network, :ip => "{{ip_address}}"
             end
 
         end
@@ -35,5 +35,4 @@
   - name: Run command on specific folder
     command: vagrant up
     args:
-      chdir: /home/vkbida/vagranttest4/
-
+      chdir: "{{path}}"
