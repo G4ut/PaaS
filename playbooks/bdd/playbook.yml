@@ -1,0 +1,8 @@
+---
+- name: installation serveur web
+  hosts: "{{ host }}"
+  become: yes
+  
+    tasks:
+    - name: install apache
+      apt: name=mariadb-server
