@@ -7,7 +7,7 @@
   - name: Run command on specific folder
     command: vagrant up
     args:
-      chdir: /home/vkbida/vagranttest4/
+      chdir: "{{ path }}"
 
 
 
