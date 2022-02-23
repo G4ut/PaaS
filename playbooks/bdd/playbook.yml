@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   
- tasks:
+  tasks:
     - name: install mysql    
       apt: name=mysql 
       update_cache: yes 
