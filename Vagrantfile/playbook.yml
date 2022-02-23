@@ -1,14 +1,39 @@
 ---
 - hosts: all
   tasks:
-  - name: Choix Vagrantfile
-    template: src="{{ Vagrantfile }}" dest="{{ path }}"
+  - name: Creates directory
+    file:
+      path: "{{path}}" "{{directory_name}}"
+      state: directory
 
+  - name: Ansible create file with content example
+    copy:
+      dest: "/home/vkbida/vagranttest4/Vagrantfile"
+      content: |
+        Vagrant.configure("2") do |config|
+          config.vm.box = "debian/buster64"
+
+         config.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+            vb.cpus = 1
+          end
+
+           config.vm.provision "shell", inline: <<-SHELL
+              apt update
+              apt -y install ntp net-tools
+              systemctl enable ntp.service
+              systemctl start ntp
+            SHELL
+            
+            config.vm.define "ldap1" do |b|
+              b.vm.hostname = "ldap1"
+              b.vm.network :private_network, :ip => "192.168.121.2"
+            end
+
+        end
+        
   - name: Run command on specific folder
     command: vagrant up
     args:
-      chdir: dest="{{ path }}"
+      chdir: /home/vkbida/vagranttest4/
 
-
-
- 
