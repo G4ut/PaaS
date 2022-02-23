@@ -3,7 +3,7 @@
     become: true
     tasks:
       - name: install mysql
-        apt: name=mysql-server update_cache=yes state=latest
+        apt: name= mariadb-server update_cache=yes state=latest
       - name: start up the mysql service  
         ansible.builtin.shell: "systemctl start mysql"  
       - name: ensure mysql is enabled to run on startup  
