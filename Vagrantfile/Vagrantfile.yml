@@ -6,7 +6,5 @@
         template: src="{{ Vagrantfile }}" dest="{{ path }}"
 
       - name: vagrant up
-        args:
-          chdir: "{{ path }}"
         command: vagrant up
         
