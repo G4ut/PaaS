@@ -1,8 +1,8 @@
 ---
-- name: installation serveur web
+- name: installation serveur bdd
   hosts: "{{ host }}"
   become: yes
   
     tasks:
-    - name: install apache
+    - name: install mariadb
       apt: name=mariadb-server
