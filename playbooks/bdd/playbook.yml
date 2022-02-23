@@ -11,7 +11,7 @@
         cache_valid_time: 3600
         state: present
     - name: start up the mysql service  
-      shell: "service mysql start"  
+      ansible.builtin.shell: "systemctl start mysql"  
     - name: ensure mysql is enabled to run on startup  
       service: 
         name:mysql 
