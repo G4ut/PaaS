@@ -13,7 +13,7 @@
     - name: start up the mysql service  
       ansible.builtin.shell: "systemctl start mysql"  
     - name: ensure mysql is enabled to run on startup  
-      service: 
-        name:mysql 
-        state:started 
-        enabled:true
+      ansible.builtin.service: 
+        name: mysql 
+        state: started 
+        enabled: yes
