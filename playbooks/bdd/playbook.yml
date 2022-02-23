@@ -3,7 +3,7 @@
     become: true
     tasks:
       - name: install mariadb
-        apt: name= mariadb-server update_cache=yes state=latest
+        apt: name=mariadb-server update_cache=yes state=latest
       - name: start up the mariadb service  
         ansible.builtin.shell: "systemctl start mariadb"  
       - name: ensure mariadb is enabled to run on startup  
