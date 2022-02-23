@@ -3,7 +3,7 @@
     become: yes
     tasks:
       - name: Installing Virtualbox
-        apt: name=virtualbox state=latest 
+        apt: name=virtualbox update_cache=yes state=latest 
     
       - name: Installing Vagrant
         apt: name=vagrant update_cache=yes state=latest
