@@ -6,7 +6,7 @@
   tasks:
     - name: install mysql    
       apt: 
-        name: mysql 
+        name: mysql-server
         update_cache: yes 
         cache_valid_time: 3600
         state: present
