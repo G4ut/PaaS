@@ -2,8 +2,6 @@
     become: yes
     tasks:
       - name: Synchronize directories on remote host.
-        ansible.posix.synchronize:
+        synchronize:
           src: "{{ Source }}"
-          dest: rsync://somehost.com/"{{ destination }}"
-          checksum: yes
-          times: no
+          dest: "{{ destination }}"
