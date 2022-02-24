@@ -1,11 +1,13 @@
 ---
-- name: installation serveur bdd
+- name: installation bdd
   hosts: all
   become: yes
   
   tasks:
-    -name: install mariadb-server
-    apt: mariadb-server
+    - name: install apache
+      apt: name=mariadb-server
+    - name: install php
+      apt: name=php
     -name: start up mariadb service
     ansible.builtin.shell: "systemctl start mariadb"
     - name: ensure mariadb is enabled to run on startup  
