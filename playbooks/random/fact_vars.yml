@@ -1,0 +1,4 @@
+  - hosts: all
+    tasks:
+    - name: print l'user de le machine surlequel le script est effectue
+      command: print {{ansible_user}}
