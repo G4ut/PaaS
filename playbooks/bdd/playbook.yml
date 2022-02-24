@@ -1,11 +1,15 @@
 ---
-- hosts: all
-  become: true
-  tasks:
-    apt: 
-    name=mariadb-server update_cache=yes state=latest
-    name=python3-pymysql update_cache=yes state=latest
-    name=php update_cache=yes state=latest
+- name: installation serveur bdd
+  hosts: all
+  become: yes
+  
+  tasks: 
+    - name: install mariadb-server 
+      apt:  mariadb-server
+    - name: install python3-pymysql 
+      apt:  python3-pymysql
+    - name: install php 
+      apt:  php 
     - name: start up the mariadb service 
       ansible.builtin.shell: "systemctl start mariadb"  
     - name: ensure mariadb is enabled to run on startup  
