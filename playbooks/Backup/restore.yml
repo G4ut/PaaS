@@ -1,9 +1,7 @@
   - hosts: all
     become: yes
     tasks:
-      - name: Synchronize and delete files in dest that are not found in src of localhost.
-        ansible.posix.synchronize:
-          src: "{{ source }}"
-          dest: "{{ destination }}"
-          delete: yes
-          recursive: yes
+    - synchronize:
+        mode: pull
+        src: rsync://"{{ip_distante}}""{{path}}"
+        dest: "{{destination}}"
