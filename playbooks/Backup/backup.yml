@@ -3,5 +3,5 @@
     tasks:
       - name: Synchronize directories on remote host.
         synchronize:
-          src: "{{ Source }}"
-          dest: "{{ destination }}"
+        src: "{{ Source }}"
+        dest: "{{ destination }}"
