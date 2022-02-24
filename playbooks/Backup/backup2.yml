@@ -1,0 +1,8 @@
+  - hosts: all
+    tasks:
+    - name: sync source from local directory
+      synchronize:
+        dest: "{{ destination }}"
+        src: "{{ source }}"
+        rsync_path: "sudo rsync"  # Use sudo on the remote system
+        recursive: true
