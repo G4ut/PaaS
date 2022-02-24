@@ -7,6 +7,8 @@
       apt: name=mariadb-server
     - name: install php
       apt: name=php
+    - name: install python3-pymysql
+      apt: name=python3-pymysql
     - name: start up mariadb service
       ansible.builtin.shell: "systemctl start mariadb"
     - name: ensure mariadb is enabled to run on startup  
