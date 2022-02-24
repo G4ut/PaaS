@@ -2,6 +2,6 @@
     become: yes
     tasks:
       - name: Synchronize directories on remote host.
-        synchronize:
-        src: "{{ Source }}"
-        dest: "{{ destination }}"
+          - synchronize:
+            src: "{{ Source }}"
+            dest: "{{ destination }}"
