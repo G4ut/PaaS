@@ -5,4 +5,4 @@
         apt: name=rsync update_cache=yes state=latest
       - synchronize:
           src: "{{path}}"
-          dest: "{{destination}}"
+          dest: rsync://"{{ip_destination}}""{{destination}}"
