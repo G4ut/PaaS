@@ -1,7 +1,7 @@
   - hosts: all
     become: yes
     tasks:
-      - name: Synchronize directories on remote host.
-          - synchronize:
-            src: "{{path}}"
-            dest: rsync://192.168.121.90/"{{destination}}"
+#      - name: Synchronize directories on remote host.
+      - synchronize:
+          src: "{{path}}"
+          dest: rsync://192.168.121.90/"{{destination}}"
