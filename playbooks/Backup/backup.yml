@@ -1,7 +1,8 @@
   - hosts: all
     become: yes
     tasks:
-#      - name: Synchronize directories on remote host.
+      - name: installation de rsync
+          apt: apt: name=rsync update_cache=yes state=latest
       - synchronize:
           src: "{{path}}"
           dest: rsync://192.168.121.90/"{{destination}}"
