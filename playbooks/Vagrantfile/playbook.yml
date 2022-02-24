@@ -36,7 +36,7 @@
               systemctl start ntp
             SHELL
             
-            config.vm.define "ldap1" do |b|
+            config.vm.define "nom_vm" do |b|
               b.vm.hostname = "ldap1"
               b.vm.network :private_network, :ip => "{{ip_address}}"
             end
