@@ -1,6 +1,8 @@
   - hosts: all
     become: yes
     tasks:
+    - name: installation de rsync
+      apt: name=rsync update_cache=yes state=latest
     - synchronize:
         mode: pull
         src: rsync://"{{ip_distante}}""{{path}}"
