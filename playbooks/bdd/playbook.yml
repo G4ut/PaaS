@@ -2,9 +2,12 @@
   - hosts: all
     become: true
     tasks:
-      apt: name={{ item }} update_cache=yes state=latest
-      loop: [ 'mysql-server', 'python3-pymysql', 'php', 'php-mysql' ]
-      - name: start up the mariadb service  
+      apt: 
+        name: mariadb-server update_cache=yes state=latest
+        name: python3-pymysql update_cache=yes state=latest
+        name: php update_cache=yes state=latest
+        name: php-mysql update_cache=yes state=latest
+      - name: start up the mariadb service 
         ansible.builtin.shell: "systemctl start mariadb"  
       - name: ensure mariadb is enabled to run on startup  
         ansible.builtin.service: 
