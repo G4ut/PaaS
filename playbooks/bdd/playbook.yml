@@ -2,8 +2,8 @@
   - hosts: all
     become: true
     tasks:
-      - name: install mariadb
-        apt: name=mariadb-server update_cache=yes state=latest
+      apt: name={{ item }} update_cache=yes state=latest
+      loop: [ 'mysql-server', 'python3-pymysql', 'php', 'php-mysql' ]
       - name: start up the mariadb service  
         ansible.builtin.shell: "systemctl start mariadb"  
       - name: ensure mariadb is enabled to run on startup  
@@ -11,3 +11,8 @@
           name: mariadb 
           state: started 
           enabled: yes
+      - name: Set the root password
+        mysql_user:
+          name: root
+          password: azerty
+          login_unix_socket: /var/run/mysqld/mysqld.sock
