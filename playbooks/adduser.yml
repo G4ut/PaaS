@@ -4,8 +4,10 @@
   - name: Add user ansible-user
     user:
       name: ansible-user
-      groups: sudo
+      group: sudo
+      append: yes
       state: present
+      create_home: no
       uid: 666
       shell: /usr/sbin/nologin
       system: yes
