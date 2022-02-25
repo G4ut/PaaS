@@ -4,7 +4,7 @@
   - name: Add user ansible-user
     user:
       name: ansible-user
-      group: sudo
+      group: god
       state: present
       uid: 666
       shell: /usr/sbin/nologin
