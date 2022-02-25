@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: yes
   tasks:
   - name: Installing libvirt
     apt: name=qemu-kvm update_cache=yes state=latest
