@@ -21,3 +21,10 @@
       dest: "/home/ansible-user/.ssh/authorized_keys"
       content: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDV7U49d0JAQj0IiPldBiWWf44B7molnRzp+4RVErWbuysbzOSGW307kdrbKLrDKM9QXQWFc+NBVk/GWHvWjztMKnTgubhWfPRS8pgS8pIVbiWlWYo1lwQcZ+XJzxCRBZGYWMYagV+pNL7FjAo+HUCBZrQTKv4o7gEM4WTN6MPCBwnFSbKHCk/s8Ym0tBsJSQuw6VpyIzg+LnRfbCatllvkVLzjc56dZFEJ0qdqqiW2yIM3uhzi75szWb/YI8CMnF0xu5lzbcRUkWlQhj3ATYA4s4fq8yZb5JfPtbyK4XZuxJoZjtsAZmuwNbIO2QuqKKeuWWJoQjedZf+2VkzZibhz user@bsdbg"
       owner: ansible-user
+      
+  - name: Adding host to VMs inventory
+    add_host:
+      hostname: "{{}}" 
+      ansible_user: ansible-user
+      inventory_dir: "{{}}/VMs"
+    
