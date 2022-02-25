@@ -37,7 +37,7 @@
             SHELL
             
             config.vm.define "nom_vm" do |b|
-              b.vm.hostname = "ldap1"
+              b.vm.hostname = "{{ nom_vm }}"
               b.vm.network :private_network, :ip => "{{ip_address}}"
             end
         end
