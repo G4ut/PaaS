@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+  - name: Add user ansible-user
+    user:
+      name: ansible-user
+      group: sudo
+      append: yes
+      state: present
+      uid: 666
+      shell: /usr/sbin/nologin
+      system: yes
