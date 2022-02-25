@@ -1,0 +1,55 @@
+---
+- hosts: all
+  tasks:
+  - name: Installing libvirt
+    apt: name=qemu-kvm update_cache=yes state=latest
+    apt: name=libvirt-daemon-system update_cache=yes state=latest
+    apt: name=libvirt-clients update_cache=yes state=latest
+    apt: name=bridge-utils update_cache=yes state=latest
+    apt: name=virtinst update_cache=yes state=latest
+    apt: name=virt-manager update_cache=yes state=latest
+  
+  - name: Installing Vagrant
+    apt: name=vagrant update_cache=yes state=latest
+  
+  - name: Creates directory
+    file:
+      path: "{{path}}"
+      state: directory
+
+  - name: Ansible create file with content example
+    copy:
+      dest: "{{path}}/Vagrantfile"
+      content: |
+        Vagrant.configure("2") do |config|
+          config.vm.box = "debian/buster64"
+
+         config.vm.provider "libvirt" do |vb|
+            vb.memory = "{{ram}}"
+            vb.cpus = "{{cpu}}"
+          end
+
+           config.vm.provision "shell", inline: <<-SHELL
+              apt update
+              apt -y install ntp net-tools
+              systemctl enable ntp.service
+              systemctl start ntp
+            SHELL
+            
+            config.vm.define "nom_vm" do |b|
+              b.vm.hostname = "ldap1"
+              b.vm.network :private_network, :ip => "{{ip_address}}"
+            end
+        end
+  
+  - name: Chown Vagrantfile
+    file:
+    - path: "{{path}}/Vagrantfile"
+      owner: 1000
+      group: 1000
+  
+  - name: Run vagrant up
+    become_user: 1000
+    command: vagrant up
+    args:
+      chdir: "{{path}}"
