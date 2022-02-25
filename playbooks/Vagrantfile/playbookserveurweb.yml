@@ -1,0 +1,38 @@
+---
+- hosts: all
+  tasks:
+  - name: Creates directory
+    file:
+      path: "{{path}}"
+      state: directory
+
+  - name: Ansible create file with content example
+    copy:
+      dest: "{{path}}/Vagrantfile"
+      content: |
+        Vagrant.configure("2") do |config|
+          config.vm.box = "debian/buster64"
+
+          config.vm.network "forwarded_port", guest: 80, host: 8081
+          config.vm.network "forwarded_port", guest: 443, host: 8443
+
+         config.vm.provider "virtualbox" do |vb|
+            vb.memory = "1024"
+            vb.cpus = 1
+          end
+
+           config.vm.provision "shell", inline: <<-SHELL
+              apt update
+              sudo apt-get -qq -y install apache2 etckeeper htop multitail vim tree curl lsof wget siege goaccess
+            SHELL
+            
+            config.vm.define "ldap1" do |b|
+              b.vm.hostname = "ldap1"
+              b.vm.network :private_network, :ip => "{{ip_address}}"
+            end
+        end
+        
+  - name: Run command on specific folder
+    command: vagrant up
+    args:
+      chdir: "{{path}}"
