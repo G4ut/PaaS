@@ -5,7 +5,6 @@
     user:
       name: ansible-user
       group: sudo
-      append: yes
       state: present
       uid: 666
       shell: /usr/sbin/nologin
