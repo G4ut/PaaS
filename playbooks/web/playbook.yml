@@ -1,6 +1,6 @@
 ---
 - name: installation serveur web
-  hosts: serveurweb
+  hosts: all
   become: yes
   
   tasks:
