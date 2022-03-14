@@ -23,6 +23,11 @@
     - name: phpinfo
       copy: src=index.php dest=/var/www/html/ mode=0644
       
+    - name: remove default index.html
+      file:
+        path: /var/www/html/index.html
+        state: absent
+      
   handlers:
     - name: relancer Apache
       service: name=apache2 state=reloaded
