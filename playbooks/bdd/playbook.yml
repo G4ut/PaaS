@@ -20,7 +20,7 @@
     - name: Set the root password
       mysql_user:
         name: root
-        password: azerty
+        password: "{{mysql_root_password}}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
   tasks:
     - name: debconf for pma
