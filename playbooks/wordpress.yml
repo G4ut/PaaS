@@ -1,0 +1,15 @@
+# playbook mysql
+---
+- name: installation serveur web wordpress
+  hosts: all
+  become: yes
+  
+  tasks:
+    - name: install Wordpress
+      apt: name=wordpress
+
+    - name: Configuration d'Apache
+    copy:
+      dest: "/etc/apache2/sites-enabled/000-default.conf"
+      content: |
+        
