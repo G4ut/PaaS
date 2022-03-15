@@ -1,4 +1,5 @@
 # playbook mysql
+# playbook ftp
 ---
 - name: installation serveur web wordpress
   hosts: all
