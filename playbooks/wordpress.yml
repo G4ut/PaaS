@@ -3,13 +3,56 @@
 - name: installation serveur web wordpress
   hosts: all
   become: yes
+  vars:
+    secret_key: "{{ 100 | random }}"
   
   tasks:
-    - name: install Wordpress
+    - name: Install Wordpress
       apt: name=wordpress
+      
+    - name: Set Wordpress Database
+      mysql_db:
+        name: wordpress
+        state: present
+        login_host: 127.0.0.1
+        login_user: {{database_user}}
+        login_password: {{database_password}}
 
-    - name: Configuration d'Apache
-    copy:
-      dest: "/etc/apache2/sites-enabled/000-default.conf"
-      content: |
+    - name: Apache Configuration
+      copy:
+        dest: "/etc/apache2/sites-enabled/000-default.conf"
+        content: |
+        NameVirtualHost *:80
+        <VirtualHost *:80>
+        UseCanonicalName Off
+        VirtualDocumentRoot /usr/share/wordpress
+        Options All
+        </VirtualHost>
         
+    - name: Enable Apache Modules
+      command: a2enmod rewrite
+      command: a2enmod vhost_alias
+      
+    - name: Restart Apache Deamon
+      service:
+        name: apache2
+        state: restarted
+        
+    - name: Wordpress Configuration
+      copy:
+        dest: "/etc/wordpress/config-default.php"
+        owner: root
+        group: www-data
+        mode: '0640'
+        content: |
+        <?php
+        define('DB_NAME', 'wordpress');
+        define('DB_USER', '{{database_user}}');
+        define('DB_PASSWORD', '{{database_password}}');
+        define('DB_HOST', '127.0.0.1');
+        define('SECRET_KEY' '{{secret_key}}');
+        define('WP_CONTENT_DIR', '/var/lib/wordpress/wp-content');
+        ?>
+      copy:
+        dest: "/wordpress_secret_key"
+        content: {{secret_key}}
