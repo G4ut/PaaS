@@ -8,7 +8,7 @@
       apt: name=apache2
     - name: install php
       apt: name=php
-    - name: install php2
+    - name: install lib apache2 mod php
       apt: name=libapache2-mod-php
       
     - name: virtualhost
