@@ -2,6 +2,7 @@
 - hosts: all
   tasks:
   - name: example copying file with owner and permissions
+    become: true
     copy:
       src: "{{ source }}"
       dest: "{{ destination }}"
