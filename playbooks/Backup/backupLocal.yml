@@ -1,8 +1,0 @@
-  - hosts: all
-    become: yes
-    tasks:
-      - name: installation de rsync
-        apt: name=rsync update_cache=yes state=latest
-      - synchronize:
-          src: "{{path}}"
-          dest: "{{destination}}"
