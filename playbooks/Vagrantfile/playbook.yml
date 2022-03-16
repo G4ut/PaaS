@@ -50,6 +50,4 @@
     args:
       chdir: "{{path}}"
       
-  - name: Vagrant ssh
-    command: vagrant ssh
     
