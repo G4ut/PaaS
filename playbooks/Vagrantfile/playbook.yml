@@ -49,5 +49,5 @@
       chdir: "{{path}}"
       
   - name: Vagrant ssh
-    command: vagrant ssh "{{ nom_vm }}"
+    command: vagrant ssh
     
