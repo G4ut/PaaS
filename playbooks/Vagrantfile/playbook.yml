@@ -47,3 +47,7 @@
     command: vagrant up
     args:
       chdir: "{{path}}"
+      
+  - name: Vagrant ssh
+    command: vagrant ssh "{{ nom_vm }}"
+    
