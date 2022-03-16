@@ -6,6 +6,6 @@
     copy:
       src: "{{ source }}"
       dest: "{{ destination }}"
-      owner: foo
-      group: foo
+      owner: bg
+      group: bg
       mode: 0644
