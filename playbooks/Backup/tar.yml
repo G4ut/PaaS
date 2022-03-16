@@ -5,4 +5,4 @@
     become: yes
     community.general.archive:
       path: "{{ soucre }}"
-      dest: "{{ destination }}".tgz
+      dest: "{{ destination }}"
