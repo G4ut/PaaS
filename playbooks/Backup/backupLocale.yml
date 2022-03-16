@@ -3,8 +3,8 @@
   tasks:
   - name: example copying file with owner and permissions
     copy:
-      src: /srv/myfiles/foo.conf
-      dest: /etc/foo.conf
+      src: "{{ source }}"
+      dest: "{{ destination }}"
       owner: foo
       group: foo
       mode: 0644
