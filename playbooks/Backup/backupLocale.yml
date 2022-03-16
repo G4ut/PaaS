@@ -1,12 +1,12 @@
 ---
-- name: Copy file with owner and permission, using symbolic representation
-  hosts: all
-  become: yes
-  
+- hosts: all
+
   tasks:
-  ansible.builtin.copy:
-    src: "{{ source }}"
-    dest: "{{ destination }}#
-    owner: foo
-    group: foo
-    mode: u=rw,g=r,o=r
+  - name: Copy file with owner and permission, using symbolic representation
+    become: yes
+    ansible.builtin.copy:
+      src: "{{ source }}"
+      dest: "{{ destination }}#
+      owner: foo
+      group: foo
+      mode: u=rw,g=r,o=r
