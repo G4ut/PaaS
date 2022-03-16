@@ -1,4 +1,6 @@
 - name: Copy a "sudoers" file on the remote machine for editing
+  hosts: all
+  become: yes
   copy:
     src: /etc/sudoers
     dest: /etc/sudoers.edit
