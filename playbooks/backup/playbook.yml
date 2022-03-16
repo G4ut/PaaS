@@ -1,3 +1,4 @@
+---
 - name: Copy file with owner and permission, using symbolic representation
   ansible.builtin.copy:
     src: "{{ source }}"
