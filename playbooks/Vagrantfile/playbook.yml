@@ -1,8 +1,9 @@
 ---
 - hosts: all
-  become: yes
+
   tasks:
   - name: Installing libvirt
+    become: yes
     apt: name=qemu-kvm update_cache=yes state=latest
     apt: name=libvirt-daemon-system update_cache=yes state=latest
     apt: name=libvirt-clients update_cache=yes state=latest
@@ -11,6 +12,7 @@
     apt: name=virt-manager update_cache=yes state=latest
   
   - name: Installing Vagrant
+    become: yes
     apt: name=vagrant update_cache=yes state=latest
   
   - name: Creates directory
