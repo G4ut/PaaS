@@ -1,6 +1,0 @@
-  - hosts: all
-    tasks:
-      - name: install rsync
-        apt: name=rsync update_cache=yes state=latest
-      - name: Synchronize directories on remote host by rsync.
-        command: rsync -az "{{ source }}" "{{destination }}"
