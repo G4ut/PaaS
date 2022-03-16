@@ -1,7 +1,7 @@
 - name: Copy file with owner and permission, using symbolic representation
   ansible.builtin.copy:
-    src: /srv/myfiles/foo.conf
-    dest: /etc/foo.conf
+    src: "{{ source }}"
+    dest: "{{ destination }}#
     owner: foo
     group: foo
     mode: u=rw,g=r,o=r
