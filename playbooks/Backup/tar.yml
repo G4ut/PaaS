@@ -4,5 +4,5 @@
   - name: compress directory from "{{ source }}" to "{{ destination }}".tgz
     become: yes
     community.general.archive:
-      path: /path/to/foo
-      dest: /path/to/foo.tgz
+      path: "{{ soucre }}"
+      dest: "{{ destination }}".tgz
