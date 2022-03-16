@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  - name: Create backup archive
+    command: tar -czf {{archive_name}}.tgz {{files_path}}/*
+  
