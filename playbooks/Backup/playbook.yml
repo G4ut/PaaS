@@ -7,5 +7,5 @@
     command: scp {{ansible_hostname}}_{{epoch}}_{{archive_name}}.tgz user@192.168.1.146:/home/user/backup
   - name: Delete local backup archive
     file:
-      path: {{ansible_hostname}}_{{epoch}}_{{archive_name}}.tgz
+      path: "{{ansible_hostname}}_{{epoch}}_{{archive_name}}.tgz"
       state: absent
