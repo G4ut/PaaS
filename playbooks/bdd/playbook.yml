@@ -23,6 +23,9 @@
         password: "{{mysql_root_pass}}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
   tasks:
+  
+    - name: install package pma
+      apt: php-bz2 php-curl php-tcpdf php-zip php-gd
     - name: debconf for pma
       debconf: name=phpmyadmin question='phpmyadmin/dbconfig-install' value='true' vtype='boolean'
 
