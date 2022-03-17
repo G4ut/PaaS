@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+  - name: Create backup archive
+    command: tar -czf {{ansible_hostname}}_{{ansible_date_time.epoch}}_{{archive_name}}.tgz {{files_path}}
+  - name: Upload backup archive to server
+    command: scp {{ansible_hostname}}_{{ansible_date_time.epoch}}_{{archive_name}}.tgz user@192.168.1.146:/home/user/backup
+  - name: Delete local backup archive
+    file:
+      path: "{{ansible_hostname}}_{{ansible_date_time.epoch}}_{{archive_name}}.tgz"
+      state: absent
