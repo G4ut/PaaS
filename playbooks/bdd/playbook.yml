@@ -4,12 +4,10 @@
   become: yes
   
   tasks: 
-    - name: install mariadb-server 
-      apt:  mariadb-server
-    - name: install python3-pymysql 
-      apt:  python3-pymysql
-    - name: install php 
-      apt:  php 
+   #Apache Configuration
+    - name: Install Packages
+      apt: name={{ item }} update_cache=yes state=latest
+      loop: [ 'mysql-server', 'python3-pymysql', 'php', 'php-mysql' ]
     - name: start up the mariadb service 
       ansible.builtin.shell: "systemctl start mariadb"  
     - name: ensure mariadb is enabled to run on startup  
@@ -17,11 +15,27 @@
         name: mariadb 
         state: started 
         enabled: yes
-    - name: Set the root password
+        
+    - name: Sets the root password
       mysql_user:
         name: root
-        password: "{{mysql_root_pass}}"
+        password: "{{ mysql_root_password }}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
+
+    - name: Removes all anonymous user accounts
+      mysql_user:
+        name: ''
+        host_all: yes
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Removes the MySQL test database
+      mysql_db:
+        name: test
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
         
   
 # Ce playbook va installer un SGBD et PhpMyAdmin sur la machine hôte.
