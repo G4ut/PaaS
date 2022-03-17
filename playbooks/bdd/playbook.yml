@@ -23,35 +23,7 @@
         password: "{{mysql_root_pass}}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
         
-  tasks:
-    - name: install package for pma
-      command: apt install php-bz2 php-curl php-gd php-zip -y
-    - name: Add specified repository into sources list
-      ansible.builtin.apt_repository:
-        repo: deb http://deb.debian.org/debian buster-backports main
-        state: present
-    - name: install php-twig from buster-backports
-      command: apt-get install -t buster-backports php-twig -y
-    - name: debconf for pma
-      debconf: name=phpmyadmin question='phpmyadmin/dbconfig-install' value='true' vtype='boolean'
-
-    - name: debconf for pma
-      debconf: name=phpmyadmin question='phpmyadmin/app-password-confirm' value='{{mysql_root_pass}}' vtype='password'
-
-    - name: debconf for pma
-      debconf: name=phpmyadmin question='phpmyadmin/mysql/admin-pass' value='{{mysql_root_pass}}' vtype='password'
-
-    - name: debconf for pma
-      debconf: name=phpmyadmin question='phpmyadmin/mysql/app-pass' value='{{mysql_root_pass}}' vtype='password'
-
-    - name: debconf for pma
-      debconf: name=phpmyadmin question='phpmyadmin/reconfigure-webserver' value='' vtype='multiselect'
-
-    - name: install pma
-      apt: pkg=phpmyadmin state=present
-
-    - name: configure site
-      file: path=/var/www/phpmyadmin src=/usr/share/phpmyadmin state=link
+  
 # Ce playbook va installer un SGBD et PhpMyAdmin sur la machine hôte.
 # Pour ce faire il va :
 # - Installer mariaDB, PIP & php
