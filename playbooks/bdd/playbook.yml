@@ -8,7 +8,7 @@
       apt: name={{ item }} update_cache=yes state=latest
       loop: [ 'mysql-server', 'python3-pymysql', 'php', 'php-mysql' ]
     - name: start up the mariadb service 
-      ansible.builtin.shell: "systemctl start mariadb"  
+      command: systemctl start mariadb  
     - name: Sets the root password
       mysql_user:
         name: root
