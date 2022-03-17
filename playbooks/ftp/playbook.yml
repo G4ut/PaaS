@@ -9,6 +9,7 @@
     
     - name: Configure ProFTPd
       template: src=proftpd.conf dest=/etc/proftpd/proftpd.conf
+      notify: relancer ProFTPd
       
   handlers:
     - name: relancer ProFTPd
