@@ -9,12 +9,11 @@
       loop: [ 'mariadb-server', 'python3-pymysql', 'php', 'php-mysql' ]
     - name: start up the mariadb service 
       command: systemctl start mariadb  
-    - name: password root
+    - name: Removes all anonymous user accounts
       community.mysql.mysql_user:
-        name: root
-        password: "{{ mysql_root_password }}"
-        priv: '*.*:ALL,GRANT'
-        login_unix_socket: /var/run/mysqld/mysqld.sock
+        name: ''
+        host_all: yes
+        state: absent
 
         
   
