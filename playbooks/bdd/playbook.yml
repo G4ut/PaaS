@@ -12,8 +12,7 @@
       ansible.builtin.shell: "systemctl start mariadb"  
     - name: ensure mariadb is enabled to run on startup  
       ansible.builtin.service: 
-        name: mariadb 
-        state: started 
+        name: mariadb
         enabled: yes 
     - name: Sets the root password
       mysql_user:
