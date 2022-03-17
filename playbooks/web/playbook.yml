@@ -31,3 +31,9 @@
   handlers:
     - name: relancer Apache
       service: name=apache2 state=reloaded
+# Ce playbook installe un serveur web avec php sur l'hôte.
+# Pour ce faire il va :
+# - Installer le serveur web Apache 2 et installer et configurer PHP.
+# - Importer et installer le fichier de configuration de l'hôte viratuel apache.
+# - Modifier le fichier index par défaut en fichier phpinfo permettant de vérifier le bonfonctionnement de PHP.
+# - Relancer le service apache2 afin d'appliquer les modifications.
