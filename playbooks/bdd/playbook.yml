@@ -22,8 +22,8 @@
         name: root
         password: "{{mysql_root_pass}}"
         login_unix_socket: /var/run/mysqld/mysqld.sock
+        
   tasks:
-  
     - name: install php-bz2 for pma
       apt: php-bz2 
     - name: install php-curl for pma
