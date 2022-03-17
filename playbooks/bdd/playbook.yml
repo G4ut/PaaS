@@ -52,3 +52,9 @@
 
     - name: configure site
       file: path=/var/www/phpmyadmin src=/usr/share/phpmyadmin state=link
+# Ce playbook va installer un SGBD et PhpMyAdmin sur la machine hôte.
+# Pour ce faire il va :
+# - Installer mariaDB, PIP & php
+# - Active le serveur mariaDB dans la liste des services
+# - Installer et configurer les modules php ncessaire à la mise en service de PhpMyAdmin
+# - Installer phpMyAdmin
