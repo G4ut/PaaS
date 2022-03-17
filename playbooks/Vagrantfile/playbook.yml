@@ -31,15 +31,7 @@
             vb.memory = "{{ram}}"
             vb.cpus = "{{cpu}}"
           end
-
-           config.vm.provision "shell", inline: <<-SHELL
-              apt update
-              apt -y install ntp net-tools
-              systemctl enable ntp.service
-              systemctl start ntp
-            SHELL
-            
-            config.vm.define "nom_vm" do |b|
+            config.vm.define "{{ nom_vm }}" do |b|
               b.vm.hostname = "{{ nom_vm }}"
               b.vm.network :private_network, :ip => "{{ip_address}}"
             end
@@ -49,5 +41,10 @@
     command: vagrant up
     args:
       chdir: "{{path}}"
-      
-    
+# Ce playbook permet de créer un machine virtuelle sur un hôte.
+# La configuration de cette VM est définie par l'utilisateur (Répértoire d'installation, nom, nombre de coeur CPU, taille de la RAM, adresse IP).
+# Pour ce faire il va :
+# - Installer Libvirt et Vagrant si il ne sont pas déjà installés.
+# - créer le répertoire d'installation.
+# - écrire le Vagrantfile de la machine avec la configuration définie par l'utilisateur.
+# - Démarrer la machine
