@@ -7,10 +7,14 @@
     - name: install ProFTPd
       apt: name=proftpd
     
-      
     - name: Configure ProFTPd
       template: src=proftpd.conf dest=/etc/proftpd/proftpd.conf
       
   handlers:
     - name: relancer ProFTPd
       service: name=proftpd state=reloaded
+# Ce playbook installe et configure un serveur FTP sur l'hôte.
+# Pour ce faire il va :
+# - installer le serveur FTP ProFTPd.
+# - télécharger et installer la configuration adaptée depuis GitHub.
+# - redémarrer le service afin d'appliquer les modifications.
