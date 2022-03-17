@@ -31,7 +31,7 @@
         repo: deb http://deb.debian.org/debian buster-backports main
         state: present
     - name: install php-twig from buster-backports
-      apt: php-twig
+      command: apt-get install -t buster-backports php-twig -y
     - name: debconf for pma
       debconf: name=phpmyadmin question='phpmyadmin/dbconfig-install' value='true' vtype='boolean'
 
