@@ -12,6 +12,6 @@
 # Ce playbook fait une sauvegarde d'un repertoire d'un hote sur le serveur.
 # Le répértoire de sauvegarde et le nom de sauvegarde sont définis par l'utilisateur.
 # Pour ce faire il va :
-# - Créer une archive en tarball des fichier à sauvegarder avec un nom permetant d'etablir des version.
-# - Déplacer cet archive en SCP sur le serveur.
-# - Supprimer en sur l'hote local l'archive de sauvegarde
+# - Créer une archive en tarball des fichier à sauvegarder avec un nom permetant d'etablir des versions.
+# - Déplacer cette archive en SCP sur le serveur.
+# - Supprimer sur l'hote local l'archive de sauvegarde
