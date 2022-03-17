@@ -24,16 +24,8 @@
         login_unix_socket: /var/run/mysqld/mysqld.sock
         
   tasks:
-    - name: install php-bz2 for pma
-      apt: php-bz2 
-    - name: install php-curl for pma
-      apt: php-curl   
-    - name: install php-tcpdf for pma
-      apt: php-tcpdf
-    - name: install php-zip for pma
-      apt: php-zip
-    - name: install php-gd for pma
-      apt: php-gd
+    - name: install package for pma
+      command: apt install php-bz2 php-curl php-tcpdf php-gd php-zip
     - name: install php-twig from buster-backports
       command: apt-get install -t buster-backports php-twig
     - name: debconf for pma
