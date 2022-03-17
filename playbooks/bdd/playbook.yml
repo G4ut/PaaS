@@ -28,7 +28,7 @@
       command: apt install php-bz2 php-curl php-gd php-zip -y
     - name: Add specified repository into sources list
       ansible.builtin.apt_repository:
-        repo: http://deb.debian.org/debian buster-backports main
+        repo: deb http://deb.debian.org/debian buster-backports main
         state: present
     - name: install php-twig from buster-backports
       apt: php-twig
