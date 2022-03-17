@@ -25,7 +25,7 @@
         
   tasks:
     - name: install package for pma
-      command: apt install php-bz2 php-curl php-tcpdf php-gd php-zip -y
+      command: apt install php-bz2 php-curl php-gd php-zip -y
     - name: install php-twig from buster-backports
       command: apt-get install -t buster-backports php-twig -y
     - name: debconf for pma
