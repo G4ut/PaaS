@@ -10,11 +10,10 @@
     - name: start up the mariadb service 
       command: systemctl start mariadb  
     - name: password root
-      mysql_user:
+      community.mysql.mysql_user:
         name: root
         password: "{{ mysql_root_password }}"
-        user: root
-        check_implicit_admin: true
+        priv: '*.*:ALL,GRANT'
         login_unix_socket: /var/run/mysqld/mysqld.sock
 
         
