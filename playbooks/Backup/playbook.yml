@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
   - name: Create backup archive
-    command: tar -czf {{ansible_hostname}}_{{ansible_date_time.epoch}}_{{archive_name}}.tgz *
+    command: tar -czf {{ansible_hostname}}_{{ansible_date_time.epoch}}_{{archive_name}}.tgz .
     args:
       chdir: "{{files_path}}"
   - name: Upload backup archive to server
