@@ -4,7 +4,7 @@
   - name: Import backup archive to host
     command: scp user@192.168.1.146:/home/user/backup/{{archive_name}} {{save_path}}
   - name: Extract backup archive
-    command: tar -xzf {{save_path}}/{{archive_name}}
+    command: tar -xzf {{save_path}}/{{archive_name}} -C {{save_path}}
   - name: Delete local backup archive
     file:
       path: "{{save_path}}/{{archive_name}}"
