@@ -1,12 +1,11 @@
 ---
 - hosts: all
-  become: yes
   tasks:
   - name: Import backup archive to host
-    command: scp user@192.168.1.146:/home/user/backup/{{archive_name}} {{ansible_user}}@localhost:/
+    command: scp user@192.168.1.146:/home/user/backup/{{archive_name}} {{save_path}}
   - name: Extract backup archive
-    command: tar -xzf /{{archive_name}}
+    command: tar -xzf {{save_path}}/{{archive_name}}
   - name: Delete local backup archive
     file:
-      path: "/{{archive_name}}"
+      path: "{{save_path}}/{{archive_name}}"
       state: absent
