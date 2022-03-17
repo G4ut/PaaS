@@ -9,3 +9,9 @@
     file:
       path: "{{save_path}}/{{archive_name}}"
       state: absent
+# Ce playbook restaure une sauvegarde depuis le serveur.
+# Le répértoire de restauration et le nom du fichier sauvegarde sont définis par l'utilisateur.
+# Pour ce faire il va :
+# - Télécharger depuis le serveur cette archive en SCP.
+# - Extraire le tarball de sauvegarde dans le répértoire de restauration.
+# - Supprimer sur l'hote local l'archive de sauvegarde.
