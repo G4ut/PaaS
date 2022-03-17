@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: yes
   tasks:
   - name: Import backup archive to host
     command: scp user@192.168.1.146:/home/user/backup/{{archive_name}} /
