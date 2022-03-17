@@ -6,7 +6,7 @@
   tasks: 
     - name: Install Packages
       apt: name={{ item }} update_cache=yes state=latest
-      loop: [ 'mysql-server', 'python3-pymysql', 'php', 'php-mysql' ]
+      loop: [ 'mariadb-server', 'python3-pymysql', 'php', 'php-mysql' ]
     - name: start up the mariadb service 
       command: systemctl start mariadb  
    
