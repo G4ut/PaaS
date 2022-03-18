@@ -2,19 +2,35 @@
 - name: installation serveur bdd
   hosts: all
   become: yes
-  
-  tasks: 
-    - name: Install Packages
-      apt: name={{ item }} update_cache=yes state=latest
-      loop: [ 'python3-pymysql', 'php', 'php-mysql' ]
-    - name: Download mysql
-      get_url:
-        url: https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
-        dest: /tmp/mysql.deb
-    - name:  install mysql
-      command: apt install /tmp/mysql.deb -f -y
-    - name: start up the mysql service 
-      command: systemctl enable --now mysql.service
+
+  tasks:
+    - name: install mariadb
+      yum:
+        name:
+          - mariadb-server
+          - python3-PyMySQL
+        state: latest
+    - name: start mariadb
+      service:
+        name: mariadb
+        enabled: true
+        state: started
+    - name: mysql_root_password
+      mysql_user:
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
+        check_implicit_admin: true
+        password: "{{ mysql_root_password }}"
+        host: localhost
+    - name: remove remote root
+      mysql_user:
+        check_implicit_admin: true
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        user: root
+        host: "{{ ansible_fqdn }}"
+        state: absent
 
 
         
