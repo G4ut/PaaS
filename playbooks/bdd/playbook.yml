@@ -14,14 +14,11 @@
         name: mariadb
         enabled: true
         state: started
-    - name: delete anonymous users
-      command: "echo \"DELETE FROM mysql.user WHERE User=``;\" | sudo mysql"
-    - name: add user
-      command: "echo \"CREATE USER `aaaabaa`@`localhost` IDENTIFIED BY `password`;\" | sudo mysql"
-    - name: privilege
-      command: echo "GRANT ALL PRIVILEGES ON * . * TO `user`@`localhost`;" | sudo mysql
-    - name: flush privilege
-      command: echo "FLUSH PRIVILEGES;" | sudo mysql
+    - name: copy fichier requete
+      copy: src=requete.sql dest=/tmp/requete.sql
+    - name: requete sql
+      command: sudo mysql < /tmp/requete.sql
+
 
         
   
