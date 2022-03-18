@@ -14,13 +14,13 @@
         name: mariadb
         enabled: true
         state: started
-    - name: copy fichier requete
-      copy: src=requete.sql dest=/tmp/requete.sql
-    - name: copy fichier requete
-      copy: src=test.sh dest=/tmp/test.sh mode=0777
+    - name: Template a file to /etc/file.conf
+      ansible.builtin.template:
+        src: template.j2
+        dest: /tmp/script.sh
+        mode: '0777'
     - name: requete sql
-      command: bash /tmp/test.sh
-
+      command: bash /tmp/script.sh      
 
         
   
