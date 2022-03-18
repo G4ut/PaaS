@@ -5,7 +5,7 @@
 
   tasks:
     - name: install mariadb
-      yum:
+      apt:
         name:
           - mariadb-server
           - python3-PyMySQL
