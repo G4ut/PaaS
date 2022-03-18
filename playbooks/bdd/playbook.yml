@@ -17,10 +17,11 @@
     - name: delete anonymous users
       command: echo "DELETE FROM mysql.user WHERE User=``;" | sudo mysql
     - name: add user
-      command: echo "CREATE USER `aaaabaa`@`localhost` IDENTIFIED BY `password`;" | sudo mysql && echo "FLUSH PRIVILEGES;" | sudo mysql
+      command: echo "CREATE USER `aaaabaa`@`localhost` IDENTIFIED BY `password`;" | sudo mysql 
     - name: privilege
-      command: echo "GRANT ALL PRIVILEGES ON * . * TO `user`@`localhost`;" | sudo mysql && echo "FLUSH PRIVILEGES;" | sudo mysql
-      
+      command: echo "GRANT ALL PRIVILEGES ON * . * TO `user`@`localhost`;" | sudo mysql
+    - name: flush privilege
+      command: echo "FLUSH PRIVILEGES;" | sudo mysql
 
         
   
