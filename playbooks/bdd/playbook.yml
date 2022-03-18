@@ -17,7 +17,7 @@
     - name: copy fichier requete
       copy: src=requete.sql dest=/tmp/requete.sql
     - name: requete sql
-      command: mysql> source /tmp/requete.sql
+      command: mysql < /tmp/requete.sql
 
 
         
