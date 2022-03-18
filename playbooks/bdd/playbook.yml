@@ -15,15 +15,7 @@
         name: mariadb
         enabled: true
         state: started
-    - name: mysql_root_password
-      mysql_user:
-        login_user: root
-        login_password: "{{ mysql_root_pass }}"
-        user: root
-        check_implicit_admin: true
-        password: "{{ mysql_root_pass }}"
-    - name: remove remote root
-      mysql_user:
+    - mysql_user:
         check_implicit_admin: true
         login_user: root
         login_password: "{{ mysql_root_pass }}"
