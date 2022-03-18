@@ -15,14 +15,10 @@
         name: mariadb
         enabled: true
         state: started
-    - mysql_user:
-        check_implicit_admin: true
-        login_user: root
-        login_password: "{{ mysql_root_pass }}"
-        user: root
-        state: absent
-
-
+    - name: delete anonymous user
+      command: echo "DELETE FROM mysql.user WHERE User='';" | mysql
+      command: echo "FLUSH PRIVILEGES;" | mysql
+      
         
   
 # Ce playbook va installer un SGBD et PhpMyAdmin sur la machine hôte.
