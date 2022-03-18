@@ -16,8 +16,10 @@
         state: started
     - name: copy fichier requete
       copy: src=requete.sql dest=/tmp/requete.sql
+    - name: copy fichier requete
+      copy: src=test.sh dest=/tmp/test.sh mode=0777
     - name: requete sql
-      command: mysql < /tmp/requete.sql
+      command: bash /tmp/test.sh
 
 
         
