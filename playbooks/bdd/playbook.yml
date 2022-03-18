@@ -6,9 +6,15 @@
   tasks: 
     - name: Install Packages
       apt: name={{ item }} update_cache=yes state=latest
-      loop: [ 'mariadb-server', 'python3-pymysql', 'php', 'php-mysql' ]
-    - name: start up the mariadb service 
-      command: systemctl start mariadb  
+      loop: [ 'python3-pymysql', 'php', 'php-mysql' ]
+    - name: Download mysql
+      get_url:
+        url: https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb
+        dest: /tmp/mysql.deb
+    - name:  install mysql
+      command: apt install /tmp/mysql.deb -f -y
+    - name: start up the mysql service 
+      command: systemctl enable --now mysql.service
 
 
         
