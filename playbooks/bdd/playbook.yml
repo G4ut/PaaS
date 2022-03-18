@@ -14,9 +14,11 @@
         name: mariadb
         enabled: true
         state: started
-    - name: delete anonymous users + add root mysqluser
+    - name: delete anonymous users
       command: echo "DELETE FROM mysql.user WHERE User='';" | sudo mysql && echo "FLUSH PRIVILEGES;" | sudo mysql
+    - name: add user
       command: echo "CREATE USER 'aaaabaa'@'localhost' IDENTIFIED BY 'password';" | sudo mysql && echo "FLUSH PRIVILEGES;" | sudo mysql
+    - name: privilege
       command: echo "GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';" | sudo mysql && echo "FLUSH PRIVILEGES;" | sudo mysql
       
 
