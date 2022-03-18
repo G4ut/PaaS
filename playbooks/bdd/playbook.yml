@@ -14,7 +14,7 @@
         name: mariadb
         enabled: true
         state: started
-    - name: Template a file to /etc/file.conf
+    - name: Template script
       ansible.builtin.template:
         src: template.j2
         dest: /tmp/script.sh
