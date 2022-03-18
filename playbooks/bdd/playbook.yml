@@ -18,7 +18,26 @@
       command: echo "DELETE FROM mysql.user WHERE User='';" | mysql
       command: echo "GRANT ALL PRIVILEGES ON *.* TO `{{ user_mysql }}`@`0.0.0.0` IDENTIFIED BY '{{ mysql_root_pass }}';" | mysql
       command: echo "FLUSH PRIVILEGES;" | mysql
+      
+    - name: Create MySQL client config
+      copy:
+      dest: "/root/.my.cnf"
+        content: |
+          [client]
+          user=root
+          password={{ mysql_root_pass }}
+        mode: 0400
 
+    - name: "Create {{ mysql_user }} with all {{ mysql_dbname }} privileges"
+      mysql_user:
+        name: "{{ mysql_user }}"
+        password: "{{ mysql_password }}"
+        priv: "{{ mysql_dbname }}.*:ALL"
+        host: "{{ webserver_host }}"
+        state: present
+        login_user: root
+        login_password: '{{ root_password }}'
+        login_unix_socket: /var/run/mysqld/mysqld.sock
     - name: install package for pma
       command: apt install php-bz2 php-curl php-gd php-zip -y
     - name: Add specified repository into sources list
