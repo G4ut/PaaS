@@ -15,8 +15,9 @@
         enabled: true
         state: started
     - name: delete anonymous users + add root mysqluser
-      command: echo "DELETE FROM mysql.user WHERE User='';" | mysql
-      command: echo "GRANT ALL PRIVILEGES ON *.* TO `{{ user_mysql }}`@`%` IDENTIFIED BY '{{ mysql_root_pass }}';" | mysql
+      command: echo "DELETE FROM mysql.user WHERE User='';" | sudo mysql
+      command: echo "CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';" | sudo mysql
+      command: echo "GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';" | sudo mysql
       command: echo "FLUSH PRIVILEGES;" | mysql
       
 
