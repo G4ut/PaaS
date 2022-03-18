@@ -18,7 +18,7 @@
       command: echo "DELETE FROM mysql.user WHERE User='';" | sudo mysql
       command: echo "CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';" | sudo mysql
       command: echo "GRANT ALL PRIVILEGES ON * . * TO 'user'@'localhost';" | sudo mysql
-      command: echo "FLUSH PRIVILEGES;" | mysql
+      command: echo "FLUSH PRIVILEGES;" | sudo mysql
       
 
         
