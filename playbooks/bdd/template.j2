@@ -1,0 +1,5 @@
+echo "DELETE FROM mysql.user WHERE User='';" | mysql
+echo "CREATE USER '{{ user_mysql }}'@'localhost' IDENTIFIED BY '{{ mysql_root_pass }}';"
+echo "GRANT ALL PRIVILEGES ON * . * TO `{{ user_mysql }}`@`localhost`;"
+echo "FLUSH PRIVILEGES;"
+sudo mysql < /tmp/requete.sql
