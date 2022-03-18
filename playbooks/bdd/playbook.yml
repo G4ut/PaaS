@@ -8,7 +8,6 @@
       apt:
         name:
           - mariadb-server
-          - python3-PyMySQL
         state: latest
     - name: start mariadb
       service:
